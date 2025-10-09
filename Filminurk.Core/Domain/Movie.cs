@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Filminurk.Core.Domain
+{
+    public class Movie
+    {
+        public Guid ID { get; set; }
+        public string Title { get; set; }
+        public DateOnly FirstPublished { get; set; }
+        public decimal? CurrentRating { get; set; }
+        
+
+        //enda valitud andmed
+
+        public int? Profit { get; set; }
+        public string? Awards { get; set; }
+        public string? AwardsDescription { get; set; }
+    }
+}
