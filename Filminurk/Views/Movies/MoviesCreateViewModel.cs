@@ -1,6 +1,6 @@
-﻿namespace Filminurk.Models.Movies
+﻿namespace Filminurk.Views.Movies
 {
-    public class MoviesIndexViewModel
+    public class MoviesCreateViewModel
     {
         public Guid ID { get; set; }
         public string Title { get; set; }
@@ -13,7 +13,8 @@
         public int? Profit { get; set; }
         public string? Awards { get; set; }
         public string? AwardsDescription { get; set; }
+
+        //andmebaasi jaoks vajalikud
+        public DateTime? Entry { get; set; }
     }
-
 }
-
