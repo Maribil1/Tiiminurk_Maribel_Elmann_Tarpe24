@@ -35,7 +35,10 @@
 					<td>@movie.Profit</td>
 					<td>@movie.Awards</td>
 					<td>@movie.AwardsDescription</td>
-					<td></td>
+					<td> 
+					   <a asp-action="Delete" asp-controller="Movies" asp-route-id="@movies.ID" class="btn btn-outline-danger"></a>
+
+					</td>
 				</tr>
 			}
 		</tbody>
