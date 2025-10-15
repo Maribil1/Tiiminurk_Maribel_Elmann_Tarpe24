@@ -9,7 +9,7 @@
 	<dl class="row"></dl>
 	 <div class="form-group-row">
 		 <label asp-for="ID" class="col-sm-2" col-form-label""></label>
-		 @Html.DisplayFor(model=>model.Guid)
+		 @Html.DisplayFor(model=>model.ID)
 	</div>
 	<dl class="row"></dl>
 	<div class="form-group-row">
@@ -35,5 +35,15 @@
 	<div class="form-group-row">
 		<label asp-for="CurrentRating" class="col-sm-2" col-form-label""></label>
 		@Html.DisplayFor(model => model.CurrentRating)
+	</div>
+	<dl class="row"></dl>
+	<div class="form-group-row">
+		<label asp-for="Profit" class="col-sm-2" col-form-label""></label>
+		@Html.DisplayFor(model => model.Profit)
+	</div>
+	<dl class="row"></dl>
+	<div class="form-group-row">
+		<label asp-for="Awards" class="col-sm-2" col-form-label""></label>
+		@Html.DisplayFor(model => model.Awards)
 	</div>
 </div>
