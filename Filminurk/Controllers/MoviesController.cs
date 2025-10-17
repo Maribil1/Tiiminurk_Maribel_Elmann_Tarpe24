@@ -30,7 +30,7 @@ namespace Filminurk.Controllers
                 Awards=x.Awards,
                 AwardsDescription=x.AwardsDescription,
             });
-            return View();
+            return View(result);
         }
         [HttpGet]
         public IActionResult Create() 
@@ -66,8 +66,12 @@ namespace Filminurk.Controllers
                 }
                 
             }
-            return RedirectToAction(nameof(Index));
+            return NotFound();
 
+        }
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
 
         }
         [HttpGet]
@@ -94,6 +98,32 @@ namespace Filminurk.Controllers
             vm.EntryModifiedAt = movie.EntryModifiedAt;
 
             return View("CreateUpdate", vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(MoviesCreateUpdateViewModel vm)
+        {
+            var dto = new MoviesDTO()
+            {
+                ID = vm.ID,
+                Title = vm.Title,
+                Description = vm.Description,
+                FirstPublished = vm.FirstPublished,
+                Director = vm.Director,
+                Actors = vm.Actors,
+                CurrentRating = vm.CurrentRating,
+                Profit = vm.Profit,
+                Awards = vm.Awards,
+                AwardsDescription = vm.AwardsDescription,
+                EntryCreatedAt = vm.EntryCreatedAt,
+                EntryModifiedAt = vm.EntryModifiedAt,
+                 
+            };
+            var result=await _movieServices.Update(dto);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return RedirectToAction(nameof(Index));
         }
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id)

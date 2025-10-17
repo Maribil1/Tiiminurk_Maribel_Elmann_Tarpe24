@@ -23,5 +23,9 @@ namespace Filminurk.Core.Domain
         public int? Profit { get; set; }
         public string? Awards { get; set; }
         public string? AwardsDescription { get; set; }
+
+        public DateTime? EntryCreatedAt { get; set; }
+        public DateTime? EntryModifiedAt { get; set; }
     }
+
 }
