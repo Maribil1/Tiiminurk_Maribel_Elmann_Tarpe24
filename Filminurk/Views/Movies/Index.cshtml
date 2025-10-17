@@ -6,7 +6,7 @@
 }
 
 <div>
-	<a asp-action="Create" asp-controller="Movies" type="submit" class="btn btn-primary" value="Create">Add Movie</a>
+	<a asp-action="Create" asp-controller="Movies" type="submit" class="btn btn-primary">Add Movie</a>
 </div>
 <div class="h1">
 	Filmid
@@ -37,10 +37,12 @@
 					<td>@movie.Awards</td>
 					<td>@movie.AwardsDescription</td>
 					<td> 
-					   <a asp-action="Delete" asp-controller="Movies" asp-route-id="@movie.ID" class="btn btn-outline-danger"></a>
-					   <a asp-action="Update" asp-controller="Movies" asp-route-id="@movie.ID" class="btn btn-outline-danger"></a>
+						<a asp-action="Delete" asp-controller="Movies" asp-route-id="@movie.ID" class="btn btn-outline-danger">Kustuta</a>
+						<a asp-action="Update" asp-controller="Movies" asp-route-id="@movie.ID" class="btn btn-outline-danger">Uuenda</a>
+						<a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.ID" class="btn btn-outline-danger">Info</a>
 					</td>
 				</tr>
+				rowNumber += 1;
 			}
 		</tbody>
 

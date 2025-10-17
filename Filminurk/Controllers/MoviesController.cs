@@ -36,7 +36,7 @@ namespace Filminurk.Controllers
         public IActionResult Create() 
         {
             MoviesCreateUpdateViewModel result = new();
-            return View("Create", result);
+            return View("CreateUpdate", result);
         }
         [HttpPost]
         public async Task<IActionResult> Create(MoviesCreateUpdateViewModel viewModel)
@@ -72,7 +72,26 @@ namespace Filminurk.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
-
+            var movie=await _movieServices.DetailsAsync(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            var vm = new MoviesDetailsViewModel();
+            vm.ID = movie.ID;
+            vm.Title = movie.Title;
+            vm.Description = movie.Description;
+            vm.FirstPublished = movie.FirstPublished;
+            vm.Director = movie.Director;
+            vm.Actors = movie.Actors;
+            vm.CurrentRating = movie.CurrentRating;
+            vm.Profit = movie.Profit;
+            vm.Awards = movie.Awards;
+            vm.AwardsDescription = movie.AwardsDescription;
+            vm.Actors = movie.Actors;
+            vm.EntryCreatedAt = movie.EntryCreatedAt;
+            vm.EntryModifiedAt = movie.EntryModifiedAt;
+            return View(vm);
         }
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
