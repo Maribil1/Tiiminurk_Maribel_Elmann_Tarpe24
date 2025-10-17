@@ -33,7 +33,7 @@ namespace Filminurk.ApplicationServices.Services
             movie.Awards = dto.Awards;
             movie.AwardsDescription = dto.AwardsDescription;
            // movie.EntryCreatedAt=DateTime.Now;
-           //movie.EntryModifiedAT=DateTime.Now;
+           //movie.EntryModifiedAt=DateTime.Now;
            await _context.Movies.AddAsync(movie);
            await _context.SaveChangesAsync();
            
@@ -64,8 +64,8 @@ namespace Filminurk.ApplicationServices.Services
             movie.Profit = dto.Profit;
             movie.Awards = dto.Awards;
             movie.AwardsDescription = dto.AwardsDescription;
-            movie.EntryCreatedAt=DateTime.Now;
-            movie.EntryModifiedAT=DateTime.Now;
+            movie.EntryCreatedAt = dto.EntryCreatedAt;
+            movie.EntryModifiedAt=DateTime.Now;
 
             _context.Movies.Update(movie);
             await _context.SaveChangesAsync();
