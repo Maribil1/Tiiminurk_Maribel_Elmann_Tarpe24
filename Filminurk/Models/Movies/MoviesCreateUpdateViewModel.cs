@@ -9,6 +9,9 @@
         public string Director { get; set; }
         public List<string>? Actors{ get; set; }
         public decimal? CurrentRating { get; set; }
+        /* kaasasolevate piltide andmeomadused */
+        public List<IFormFile> Files{ get; set; }
+        public List<ImageViewModel> Images{ get; set; } = new List<ImageViewModel>();
 
 
         //enda valitud andmed

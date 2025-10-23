@@ -14,10 +14,12 @@ namespace Filminurk.ApplicationServices.Services
     public class MovieServices : IMovieServices
     {
         public readonly FilminurkTARpe24Context _context;
+        private readonly IFilesServices _filesServices;
 
-        public MovieServices(FilminurkTARpe24Context context)
+        public MovieServices(FilminurkTARpe24Context context, IFilesServices filesServices)
         {
             _context = context;
+            _filesServices = filesServices;
         }
         public async Task<Movie> Create(MoviesDTO dto)
         {
@@ -32,10 +34,12 @@ namespace Filminurk.ApplicationServices.Services
             movie.Profit = dto.Profit;
             movie.Awards = dto.Awards;
             movie.AwardsDescription = dto.AwardsDescription;
-           // movie.EntryCreatedAt=DateTime.Now;
-           //movie.EntryModifiedAt=DateTime.Now;
-           await _context.Movies.AddAsync(movie);
-           await _context.SaveChangesAsync();
+            movie.EntryCreatedAt=DateTime.Now;
+            movie.EntryModifiedAt=DateTime.Now;
+            _filesServices.FilesToApi(dto,movie);
+           
+            await _context.Movies.AddAsync(movie);
+            await _context.SaveChangesAsync();
            
            return movie;
         }
@@ -44,13 +48,7 @@ namespace Filminurk.ApplicationServices.Services
             var result= await _context.Movies.FirstOrDefaultAsync(x => x.ID==id);
             return result;
         }
-        public async Task<Movie> Delete(Guid id)
-        {
-            var result= await _context.Movies.FirstOrDefaultAsync(m => m.ID==id);
-            _context.Movies.Remove(result);
-            await _context.SaveChangesAsync();
-            return result;
-        }
+        
         public async Task<Movie> Update(MoviesDTO dto)
         {
             Movie movie= new Movie();
@@ -66,11 +64,31 @@ namespace Filminurk.ApplicationServices.Services
             movie.AwardsDescription = dto.AwardsDescription;
             movie.EntryCreatedAt = dto.EntryCreatedAt;
             movie.EntryModifiedAt=DateTime.Now;
+            _filesServices.FilesToApi(dto, movie);
 
             _context.Movies.Update(movie);
             await _context.SaveChangesAsync();
 
             return movie;
+        }
+        public async Task<Movie> Delete(Guid id)
+        {
+            var result= await _context.Movies
+                .FirstOrDefaultAsync(m => m.ID==id);
+            
+            var images = await _context.FilesToApi
+                .Where(x => x.MovieID == id)
+                .Select(y => new FileToApiDTO()
+                {
+                    ImageID = y.ImageID,
+                    MovieID = y.MovieID,
+                    FilePath = y.ExistingFilePath,
+                }).ToArrayAsync();
+              await _filesServices.RemoveImagesFromApi(images);
+              _context.Movies.Remove(result);
+              await _context.SaveChangesAsync();
+
+             return result;
         }
 
     }
