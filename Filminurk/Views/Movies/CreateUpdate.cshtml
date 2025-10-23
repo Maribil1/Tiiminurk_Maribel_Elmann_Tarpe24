@@ -78,6 +78,12 @@ else
 				<input asp-for="EntryModifiedAt" class="form-control" />
 			</div>
 		</div>
+		@foreach(var images in Model.Images)
+		{
+			<partial name="_Images" model="Images" />
+			<input asp-action="removeImage" asp-controller="Movies" asp-route-ImageID="@images.ImageID" type="submit" 
+			class="btn btn-success" value="Eemalda see pilt"/>
+		}
 		<div>
 			@if (Model.ID.HasValue)
 			{
