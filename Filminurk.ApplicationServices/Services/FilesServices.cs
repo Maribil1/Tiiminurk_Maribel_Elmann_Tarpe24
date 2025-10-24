@@ -46,7 +46,7 @@ namespace Filminurk.ApplicationServices.Services
                             MovieID=domain.ID,
 
                         };
-                        _context.FilesToApi.AddAsync(path);
+                        _context.FilesToApi.Add(path);
                     }
                 }
 
@@ -75,6 +75,11 @@ namespace Filminurk.ApplicationServices.Services
                 RemoveImageFromApi(dto);
             }
             return null;
+        }
+
+        public Task<FileToApi> RemoveImagesFromApi(FileToApiDTO dto)
+        {
+            throw new NotImplementedException();
         }
 
         Task<FileToApi> IFilesServices.RemoveImagesFromApi(FileToApiDTO[] dto)
