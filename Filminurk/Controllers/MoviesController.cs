@@ -71,7 +71,7 @@ namespace Filminurk.Controllers
 
                 };
                 var result = await _movieServices.Create(dto);
-                /*if (result != null)
+                if (result == null)
                 {
                    
                     return NotFound();
@@ -79,7 +79,7 @@ namespace Filminurk.Controllers
                 if (!ModelState.IsValid)
                 {
                     return NotFound();
-                }*/
+                }
                 return RedirectToAction(nameof(Index));
 
             }

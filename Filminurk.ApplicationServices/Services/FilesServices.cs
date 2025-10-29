@@ -36,9 +36,9 @@ namespace Filminurk.ApplicationServices.Services
                     string uploadFolder = Path.Combine(_webHost.ContentRootPath, "wwwroot", "multipleFileUpload");
                     string uniqueFileName=Guid.NewGuid().ToString() + "_" +file.FileName;
                     string filepath =Path.Combine(uploadFolder,uniqueFileName);
-                    using (var FileStream = new FileStream(filepath, FileMode.Create))
+                    using (var fileStream = new FileStream(filepath, FileMode.Create))
                     {
-                        file.CopyTo(FileStream);
+                        file.CopyTo(fileStream);
                         FileToApi path = new FileToApi()
                         {
                             ImageID=Guid.NewGuid(),
