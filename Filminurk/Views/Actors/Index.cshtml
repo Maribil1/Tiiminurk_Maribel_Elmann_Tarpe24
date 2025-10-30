@@ -1,1 +1,47 @@
-﻿
+﻿@model IEnumerable<Filminurk.Models.Actors.ActorsIndexViewModel>
+
+@{
+	int rowNumber = 1;
+}
+<div>
+	<a asp-action="Create" asp-controller="Actors" type="submit" class="btn btn-primary">Add Actor</a>
+</div>
+<div class="h1">
+	Actors
+</div>
+<form method="get">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">FirstName</th>
+				<th scope="col">LastName</th>
+				<th scope="col">NickName</th>
+				<th scope="col">PortraitID</th>
+				<th scope="col">Age</th>
+				<th scope="col">Gender</th>
+				<th scope="col">Tööriistad</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var actor in Model)
+			{
+				<tr>
+					<td>@rowNumber</td>
+					<td>@actor.FirstName</td>
+					<td>@actor.LastName</td>
+					<td>@actor.NickName</td>
+					<td>@actor.PortraitID</td>
+					<td>@actor.Age</td>
+					<td>@actor.Gender</td>
+					
+					<td>
+						
+					</td>
+				</tr>
+				rowNumber += 1;
+			}
+		</tbody>
+
+	</table>
+</form>
