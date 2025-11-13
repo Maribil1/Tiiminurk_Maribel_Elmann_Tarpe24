@@ -1,10 +1,10 @@
 ﻿@model Filminurk.Models.UserComments.UserCommentsIndexViewModel
 
-<h1>Kustuta komentaar</h1>
+<h1>Vaata kommentaari</h1>
 <div>
 	<h4>Info:</h4>
 	<hr />
-    <dl class="row">
+	<dl class="row">
 		<div class="form-group row">
 			<label asp-for="CommentID" class="col-sm 2 col-form-label"></label>
 			@Html.DisplayFor(model => model.CommentID)
@@ -59,6 +59,12 @@
 		</div>
 	</dl>
 	<hr />
-	<a asp-action="Index" asp-controller="UserComments" class="btn btn-primary">Tagasi</a>
-	<a asp-action="DeleteAdmin" asp-controller="UserComments" method="post" class="btn btn-danger">Kustuta</a>
+	<form asp-action="DeleteAdmin" method="post">
+		<a asp-action="Index" asp-controller="UserComments" class="btn btn-primary">Tagasi</a>
+		<input type="hidden" asp-for="CommentID" />
+		<input type="submit" value="Kustuta" asp-controller="UserComments" asp-action="DeleteAdminPost" asp-route-id="@Model.CommentID" class="btn btn-danger" />
+	</form>
+		
+		
 </div>
+
