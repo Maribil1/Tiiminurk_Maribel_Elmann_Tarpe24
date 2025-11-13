@@ -1,13 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Filminurk.Models.UserComments
+﻿namespace Filminurk.Models.UserComments
 {
-    public class UserCommentsIndexViewModel
+    public class UserCommentsCreateViewModel
     {
-        [Key]
         public Guid CommentID { get; set; }
-        public string? CommentUserID { get; set; }
-        public string? CommentBody { get; set; }
+        public string CommentUserID { get; set; } = "00000000-0000-0000-000000000001";
+        public string CommentBody { get; set; }
         public int? CommentScore { get; set; }
         public int? IsHelpful { get; set; }
         public int? IsHarmful { get; set; }

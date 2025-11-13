@@ -1,4 +1,6 @@
-﻿namespace Filminurk.Models.Movies
+﻿using Filminurk.Core.Domain;
+
+namespace Filminurk.Models.Movies
 {
     public class MoviesDetailsViewModel
     {
@@ -7,7 +9,7 @@
         public string? Description { get; set; }
         public DateOnly? FirstPublished { get; set; }
         public string? Director { get; set; }
-        public List<string>? Actors { get; set; }
+        public List<Actor>? Actors { get; set; }
         public decimal? CurrentRating { get; set; }
         /* kaasasolevate piltide andmeomadused */
         public List<ImageViewModel> Images { get; set; } = new List<ImageViewModel>();

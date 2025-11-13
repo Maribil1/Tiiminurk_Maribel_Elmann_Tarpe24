@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Filminurk.Core.Dto
 {
-    public class UserCommentDTO
+    public class UserCommentsDTO
     {
         [Key]
-        public Guid CommentID { get; set; }
+        public Guid? CommentID { get; set; }
         public string? CommentUserID { get; set; }
         public string? CommentBody { get; set; }
         public int CommentScore { get; set; }
-        public int IsHelpful { get; set; }
-        public int IsHarmful { get; set; }
+        public int? IsHelpful { get; set; }
+        public int? IsHarmful { get; set; }
 
         //Andmebaasi jaoks vajalikud andmed
         public DateTime CommentCreatedAt { get; set; }
