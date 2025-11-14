@@ -12,7 +12,7 @@ namespace Filminurk.Core.Domain
         [Key]
         public Guid FavouriteListID { get; set; }
         public string ListBelongsToUser { get; set; }
-        public bool IsMoviesOnActor { get; set; }
+        public bool IsMoviesOrActor { get; set; }
         public string ListName { get; set; }
         public string? ListDescription { get; set; }
         public bool IsPrivate { get; set; }
