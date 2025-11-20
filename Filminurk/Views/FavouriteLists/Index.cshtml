@@ -8,6 +8,7 @@
 }
 <div>
 	<a asp-action="CreateList" asp-controller="FavouriteLists" class="btn btn-primary">Tee uus lemmikute nimekiri</a>
+	<a asp-action="Index" asp-controller="Home" class="btn btn-primary">Pealeht</a>
 </div>
 <div@*no class currently, no design*@>
 	<form method="form">
@@ -31,20 +32,40 @@
 				}
 			</thead>
 			<tbody>
-				@if (Model.Any())
+				@if (!Model.Any())
 				{
 					<table>
 						<tr>
 							<td colspan="2">Sorry, no list</td>
 						</tr>
 						<tr>
-							<td><img width="128" src="~/lib/defaultassets/image/noposter.png"></td>
+							<td><img width="128" src="~/lib/defaultassets/image/Nimetu.png"></td>
 						</tr>
 					</table>
 				}
 				else
 				{
-					
+					@foreach(var list in Model)
+					{
+						<table>
+							<tr>
+								<td colspan="2">
+									<a asp-action="ListDetailsListOwner" asp-controller="FavouriteLists" asp-route-id="@list.FavouriteListID">@list.ListName</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									@foreach(var image in list.Image)
+									{
+										<partial name="_ImageIndex" model="image" />
+									}
+								</td>
+								<td>@list.ListDescription</td>
+							</tr>
+						</table>
+
+					}
+					rownumber++;
 				}
 			</tbody>
 		</table>

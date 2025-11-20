@@ -55,7 +55,7 @@ namespace Filminurk.Data.Migrations
 
                     b.HasIndex("MovieID");
 
-                    b.ToTable("Actor");
+                    b.ToTable("Actor", (string)null);
                 });
 
             modelBuilder.Entity("Filminurk.Core.Domain.FavouriteList", b =>
@@ -95,7 +95,7 @@ namespace Filminurk.Data.Migrations
 
                     b.HasKey("FavouriteListID");
 
-                    b.ToTable("FavouriteLists");
+                    b.ToTable("FavouriteLists", (string)null);
                 });
 
             modelBuilder.Entity("Filminurk.Core.Domain.FileToApi", b =>
@@ -115,7 +115,7 @@ namespace Filminurk.Data.Migrations
 
                     b.HasKey("ImageID");
 
-                    b.ToTable("FilesToApi");
+                    b.ToTable("FilesToApi", (string)null);
                 });
 
             modelBuilder.Entity("Filminurk.Core.Domain.FileToDatabase", b =>
@@ -141,7 +141,7 @@ namespace Filminurk.Data.Migrations
 
                     b.HasKey("ImageID");
 
-                    b.ToTable("FilesToDatabase");
+                    b.ToTable("FilesToDatabase", (string)null);
                 });
 
             modelBuilder.Entity("Filminurk.Core.Domain.Movie", b =>
@@ -190,7 +190,7 @@ namespace Filminurk.Data.Migrations
 
                     b.HasIndex("FavouriteListID");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movies", (string)null);
                 });
 
             modelBuilder.Entity("Filminurk.Core.Domain.UserComment", b =>
@@ -230,7 +230,7 @@ namespace Filminurk.Data.Migrations
 
                     b.HasIndex("MovieID");
 
-                    b.ToTable("UserComments");
+                    b.ToTable("UserComments", (string)null);
                 });
 
             modelBuilder.Entity("Filminurk.Core.Domain.Actor", b =>

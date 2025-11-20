@@ -10,8 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IMovieServices, MovieServices>();
 builder.Services.AddScoped<IFilesServices, FilesServices>();
 builder.Services.AddScoped<IUserCommentServices, UserCommentServices>();
+builder.Services.AddScoped<IFavouriteListsServices, FavouriteListsServices>();
 builder.Services.AddDbContext<FilminurkTARpe24Context>(options => options.UseSqlServer
  (builder.Configuration.GetConnectionString("DefaultConnection")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
