@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Filminurk.Core.Domain;
+using Filminurk.Core.Dto;
 
 namespace Filminurk.Core.ServiceInterface1
 {
     public interface IFavouriteListsServices
     {
         Task<FavouriteList> DetailsAsync(Guid id);
-        Task<FavouriteList> Create(FavouriteList dto, List<Movie> selectedMovies);
+        Task<FavouriteList> Create(FavouriteListDTO dto /*List<Movie> selectedMovies*/);
     }
 }
